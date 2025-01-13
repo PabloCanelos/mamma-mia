@@ -26,5 +26,3 @@ CardPizza.propTypes = {
 };
 
 export default CardPizza;
-
-  
