@@ -1,8 +1,33 @@
 import Header from './Header'
 import CardPizza from './CardPizza'
+import { pizzas } from './pizzas' 
 import './Home.css'
 
 const Home = () => {
+  console.log(pizzas) 
+  return (
+    <div>
+      <Header />
+      <div className='home'>
+        {pizzas.map(pizza => (
+          <CardPizza
+            key={pizza.id}
+            name={pizza.name}
+            ingredients={pizza.ingredients}
+            price={pizza.price}
+            image={pizza.img}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default Home
+
+// el contenido de abajo comentado pertenece al hito pasado
+// ha sido comentado con el objeto de que no interceda en mi codigo hito 3
+{/*const Home = () => {
   return (
     <div>
       <Header />
@@ -30,4 +55,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home */}
