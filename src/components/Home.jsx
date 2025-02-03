@@ -1,9 +1,53 @@
-import Header from './Header'
-import CardPizza from './CardPizza'
-import { pizzas } from './pizzas' 
-import './Home.css'
+import React, { useEffect, useState } from 'react'
 
 const Home = () => {
+  const [pizzas, setPizzas] = useState([])
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchPizzas = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/pizzas')
+        if (!response.ok) {
+          throw new Error('Respuesta de red no fue correcta')
+        }
+        const data = await response.json()
+        setPizzas(data)
+      } catch (error) {
+        setError(error.message)
+        console.error('Error al obtener las pizzas:', error)
+      }
+    }
+
+    fetchPizzas()
+  }, [])
+
+  if (error) {
+    return <div>Error: {error}</div>
+  }
+
+  return (
+    <div>
+      <h1>Pizzería Mamma Mía</h1>
+      <div className='lista-pizzas'>
+        {pizzas.map(pizza => (
+          <div key={pizza.id} className='tarjeta-pizza'>
+            <h2>{pizza.name}</h2>
+            <p>Precio: ${pizza.price}</p>
+            <p>Ingredientes: {pizza.ingredients.join(', ')}</p>
+            <img src={pizza.img} alt={pizza.name} />
+            <p>{pizza.desc}</p>
+            <button>Añadir al carrito</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default Home
+
+{ /*const Home = () => {
   console.log(pizzas) 
   return (
     <div>
@@ -55,4 +99,4 @@ export default Home
   )
 }
 
-export default Home */}
+export default Home */ }
