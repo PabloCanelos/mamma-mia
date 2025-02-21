@@ -1,5 +1,3 @@
-
-
 import React from 'react'
 import Home from './components/Home'
 //import Cart from './components/Cart'
@@ -18,8 +16,8 @@ const App = () => {
       {/*<Cart /> */}
       {/* <Register /> */}
       {/*<Login />  */ } 
-      <Footer />
+   /*   <Footer />
      </div>
   )
 }
-export default App
+export default App 
