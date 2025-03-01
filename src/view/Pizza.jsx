@@ -31,14 +31,18 @@ const Pizza = () => {
   }
 
   return (
-    <div>
+    <>
       <h1>{pizza.name}</h1>
       <p>Precio: ${pizza.price}</p>
       <p>Ingredientes: {pizza.ingredients.join(', ')}</p>
       <img src={pizza.img} alt={pizza.name} />
       <p>{pizza.desc}</p>
       <button>Añadir al carrito</button>
-    </div>
+      <div>
+        <p>Volver a la <Link to="/">Página principal</Link></p>
+        <p>Ir al <Link to="/cart">Carrito</Link></p>
+      </div>
+    </>
   )
 }
 

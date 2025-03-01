@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import '../assets/style.css'// Asegúrate de que la ruta sea correcta
+import '../assets/style.css'
+import { Link } from 'react-router-dom' // Asegúrate de que la ruta sea correcta
 
 const Register = () => {
   const [email, setEmail] = useState('')
@@ -22,12 +23,18 @@ const Register = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type='email' placeholder='Email' value={email} onChange={handleEmailChange} required />
-      <input type='password' placeholder='Contraseña' value={password} onChange={handlePasswordChange} required />
-      <input type='password' placeholder='Confirmar Contraseña' value={confirmPassword} onChange={handleConfirmPasswordChange} required />
-      <button type='submit'>Login</button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <input type='email' placeholder='Email' value={email} onChange={handleEmailChange} required />
+        <input type='password' placeholder='Contraseña' value={password} onChange={handlePasswordChange} required />
+        <input type='password' placeholder='Confirmar Contraseña' value={confirmPassword} onChange={handleConfirmPasswordChange} required />
+        <button type='submit'>Login</button>
+      </form>
+      <div>
+        <p>¿Ya tienes una cuenta? <Link to="/login">Inicia sesión aquí</Link></p>
+        <p>Volver a la <Link to="/">Página principal</Link></p>
+      </div>
+   </>
   )
 }
 

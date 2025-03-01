@@ -1,6 +1,6 @@
-import { useState } from 'react' 
-import { pizzaCart } from './pizzas'
-import './Cart.css'
+import { useState } from 'react'
+import { pizzaCart } from '../components/pizzas'
+import '../components/Cart.css'
 
 const Cart = () => {
   // Estado inicial del carrito utilizando useState
@@ -39,7 +39,7 @@ const Cart = () => {
           <li key={pizza.id}>
             <span>{pizza.name} - ${pizza.price} x {pizza.count}</span>
             <button className='btndisminuir' onClick={() => disminuirCantidad(pizza)}>-</button>
-            <button className='btnaumentar' onClick={() => aumentarCantidad(pizza)}>+</button>  
+            <button className='btnaumentar' onClick={() => aumentarCantidad(pizza)}>+</button>
           </li>
         ))}
       </ul>
